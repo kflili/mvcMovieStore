@@ -17,21 +17,12 @@ namespace mvcMovieStore.Controllers
             return View(movie);
         }
 
-        public ActionResult Edit(int id)
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
+        public ActionResult ByReleaseDate(int year, int month)
         {
-            return Content("id=" + id);
-        }
-
-        // demostrate action parameters
-        // movies
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            pageIndex = pageIndex ?? 1;
-            if (string.IsNullOrWhiteSpace(sortBy))
             {
-                sortBy = "Name";
+                return Content(year + "/" + month);
             }
-            return Content(string.Format($"pageIndex = {pageIndex} & sortBy = {sortBy}"));
         }
     }
 }
