@@ -16,5 +16,22 @@ namespace mvcMovieStore.Controllers
 
             return View(movie);
         }
+
+        public ActionResult Edit(int id)
+        {
+            return Content("id=" + id);
+        }
+
+        // demostrate action parameters
+        // movies
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            pageIndex = pageIndex ?? 1;
+            if (string.IsNullOrWhiteSpace(sortBy))
+            {
+                sortBy = "Name";
+            }
+            return Content(string.Format($"pageIndex = {pageIndex} & sortBy = {sortBy}"));
+        }
     }
 }
