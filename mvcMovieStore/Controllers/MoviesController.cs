@@ -1,4 +1,5 @@
 ﻿using mvcMovieStore.Models;
+using mvcMovieStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,21 @@ namespace mvcMovieStore.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
-
-            return View(movie);
-        }
-
-        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
-        public ActionResult ByReleaseDate(int year, int month)
-        {
+            var customers = new List<Customer>
             {
-                return Content(year + "/" + month);
-            }
+                new Customer{Name = "Customer 1"},
+                new Customer{Name = "Customer 2"}
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
         }
+
+        
     }
 }

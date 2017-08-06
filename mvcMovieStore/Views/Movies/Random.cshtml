@@ -1,7 +1,24 @@
-﻿@model mvcMovieStore.Models.Movie
+﻿@model mvcMovieStore.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
 }
 
-<h2>Random</h2>
+@{ 
+    var className = Model.Customers.Count > 1 ? "Popular" : null;
+}
+<h2 class="@className">Random</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>No one has rented this movie before</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
 
