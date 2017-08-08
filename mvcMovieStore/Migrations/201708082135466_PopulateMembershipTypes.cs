@@ -15,6 +15,7 @@ namespace mvcMovieStore.Migrations
 
         public override void Down()
         {
+            Sql("DELETE FROM MembershipTypes");
         }
     }
 }
