@@ -35,7 +35,7 @@ namespace mvcMovieStore.Controllers
         // GET: Customers/Details/3
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.ID == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.ID == id);
             if (customer == null)
             {
                 return HttpNotFound();
