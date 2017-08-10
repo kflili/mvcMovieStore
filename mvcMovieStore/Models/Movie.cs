@@ -22,7 +22,6 @@ namespace mvcMovieStore.Models
         public DateTime DateAdded { get; set; }
 
         [Display(Name="Release Date")]
-        [DisplayFormat(DataFormatString = "0:d MMM yyyy")]
         public DateTime ReleaseDate { get; set; }
 
         [Display(Name ="Number in Stock")]
