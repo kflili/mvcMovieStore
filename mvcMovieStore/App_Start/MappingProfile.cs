@@ -13,7 +13,10 @@ namespace mvcMovieStore.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Customer, CustomerDto>();
+            Mapper.CreateMap<Movie, MovieDto>();
+
             Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<MovieDto, Movie>();
         }
     }
 }
