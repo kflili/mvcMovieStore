@@ -19,9 +19,10 @@ namespace mvcMovieStore.Controllers.Api
         }
 
         // Get /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return Ok(customerDtos);
         }
 
         // Get /api/customers/1
@@ -52,6 +53,7 @@ namespace mvcMovieStore.Controllers.Api
             customerDto.ID = customer.ID;
 
             return Created(new Uri(Request.RequestUri + "/" + customer.ID), customerDto);
+            // return CreatedAtRoute("DefaultApi", new { id = customer.ID }, customerDto);
         }
 
         // Put /api/customers/1
@@ -74,7 +76,7 @@ namespace mvcMovieStore.Controllers.Api
 
             _context.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = id }, customerInDb);
+            return Ok();
         }
 
         // DELETE /api/custoers/1
@@ -85,14 +87,14 @@ namespace mvcMovieStore.Controllers.Api
 
             if (customerInDb == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
             _context.Customers.Remove(customerInDb);
 
             _context.SaveChanges();
 
-            return Ok(customerInDb);
+            return Ok();
         }
     }
 }
