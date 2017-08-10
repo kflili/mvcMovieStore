@@ -25,25 +25,25 @@ namespace mvcMovieStore.Controllers.Api
         }
 
         // Get /api/customers/1
-        public CustomerDto GetCustomers(int id)
+        public IHttpActionResult GetCustomers(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.ID == id);
 
             if (customer == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
-            return Mapper.Map<Customer, CustomerDto>(customer);
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
         // Post /api/customers
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
@@ -51,33 +51,35 @@ namespace mvcMovieStore.Controllers.Api
             _context.SaveChanges();
             customerDto.ID = customer.ID;
 
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.ID), customerDto);
         }
 
         // Put /api/customers/1
         [HttpPut]
-        public void UpdateCustomer(int id, CustomerDto customerDto)
+        public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             var customerInDb = _context.Customers.SingleOrDefault(c => c.ID == id);
 
             if (customerInDb == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
             Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
 
             _context.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = id }, customerInDb);
         }
 
         // DELETE /api/custoers/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.ID == id);
 
@@ -89,6 +91,8 @@ namespace mvcMovieStore.Controllers.Api
             _context.Customers.Remove(customerInDb);
 
             _context.SaveChanges();
+
+            return Ok(customerInDb);
         }
     }
 }
