@@ -14,6 +14,7 @@ namespace mvcMovieStore.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
             Mapper.CreateMap<CustomerDto, Customer>()
                 .ForMember(c => c.ID, opt => opt.Ignore());

@@ -21,5 +21,7 @@ namespace mvcMovieStore.Dtos
         public DateTime? Birthdate { get; set; }
 
         public int MembershipTypeID { get; set; }
+
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }
