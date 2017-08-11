@@ -3,6 +3,7 @@ using mvcMovieStore.Dtos;
 using mvcMovieStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,7 +22,10 @@ namespace mvcMovieStore.Controllers.Api
         // GET api/movies
         public IHttpActionResult GetMovies()
         {
-            var moviesDtos = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var moviesDtos = _context.Movies
+                .Include(m => m.Genre)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
             return Ok(moviesDtos);
         }
 
