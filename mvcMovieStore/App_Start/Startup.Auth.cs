@@ -54,9 +54,9 @@ namespace mvcMovieStore
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "102541537137214",
+               appSecret: "3a05f30584a6eaddbf7161ba547d0158");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
