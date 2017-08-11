@@ -12,6 +12,10 @@ namespace mvcMovieStore.Models
         [Required]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Phone { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -72,6 +76,10 @@ namespace mvcMovieStore.Models
         [Display(Name = "Driving License")]
         [StringLength(255)]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]
