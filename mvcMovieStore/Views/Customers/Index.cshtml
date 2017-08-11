@@ -22,7 +22,7 @@
    <script>
        $(document).ready(function () {
 
-           $("#customers").DataTable({
+           var table = $("#customers").DataTable({
                ajax: {
                    url: "/api/customers",
                    dataSrc: ""
@@ -46,7 +46,7 @@
                ]
            });
 
-           $("#customers").on("click", ".js - delete", function () {
+           $("#customers").on("click", ".js-delete", function () {
                var button = $(this);
                bootbox.confirm("Are you sure to delete this customer?", function (result) {
                    if (result) {
@@ -54,7 +54,7 @@
                            url: "/api/customers/" + button.attr("data-customer-id"),
                            type: "DELETE",
                            success: function () {
-                               button.parents("tr").remove();
+                               table.row(button.parents("tr")).remove().draw();
                            }
                        });
                    }
