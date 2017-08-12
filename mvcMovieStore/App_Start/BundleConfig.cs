@@ -33,6 +33,7 @@ namespace mvcMovieStore
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",
+                      "~/Content/font-awesome.css",
                       "~/Content/site.css"));
         }
     }
