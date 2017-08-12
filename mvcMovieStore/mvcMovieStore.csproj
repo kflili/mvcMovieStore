@@ -220,6 +220,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -284,6 +286,14 @@
     <Compile Include="Migrations\201708111939442_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201708111939442_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708120119420_AddRental.cs" />
+    <Compile Include="Migrations\201708120119420_AddRental.Designer.cs">
+      <DependentUpon>201708120119420_AddRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708120141075_AddNumberAvailableToMovie.cs" />
+    <Compile Include="Migrations\201708120141075_AddNumberAvailableToMovie.Designer.cs">
+      <DependentUpon>201708120141075_AddNumberAvailableToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -294,6 +304,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -601,6 +612,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708111939442_AddPhoneToApplicationUser.resx">
       <DependentUpon>201708111939442_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708120119420_AddRental.resx">
+      <DependentUpon>201708120119420_AddRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708120141075_AddNumberAvailableToMovie.resx">
+      <DependentUpon>201708120141075_AddNumberAvailableToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
