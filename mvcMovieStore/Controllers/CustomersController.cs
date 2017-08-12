@@ -22,6 +22,7 @@ namespace mvcMovieStore.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -35,6 +36,7 @@ namespace mvcMovieStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -63,9 +65,14 @@ namespace mvcMovieStore.Controllers
         }
 
         // GET: Customers
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("List");
+            }
+            return View("ReadOnlyList");
         }
 
         // GET: Customers/Details/3
@@ -79,6 +86,7 @@ namespace mvcMovieStore.Controllers
             return View(customer);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.ID == id);
