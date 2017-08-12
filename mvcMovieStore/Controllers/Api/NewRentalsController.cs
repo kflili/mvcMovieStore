@@ -21,31 +21,18 @@ namespace mvcMovieStore.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRental)
         {
-            if (newRental.MovieIDs.Count == 0)
-            {
-                return BadRequest("No Movie IDs have been given.");
-            }
-
             var customer = _context.Customers
-                .SingleOrDefault(c => c.ID == newRental.CustomerID);
+                .Single(c => c.ID == newRental.CustomerID);
 
-            if (customer == null)
-            {
-                return BadRequest("CustomerID is not valid.");
-            }
-
-            var movies = _context.Movies.Where(m => newRental.MovieIDs.Contains(m.ID)).ToList();
-
-            if (movies.Count != newRental.MovieIDs.Count)
-            {
-                return BadRequest("One or more movieIDs are invalid.");
-            }
+            var movies = _context.Movies
+                .Where(m => newRental.MovieIDs.Contains(m.ID))
+                .ToList();
 
             foreach (var movie in movies)
             {
                 if (movie.NumberAvailable == 0)
                 {
-                    return BadRequest("Movie is not available.");
+                    return BadRequest(movie.Name + " is not available.");
                 }
                 movie.NumberAvailable--;
 
