@@ -295,6 +295,10 @@
     <Compile Include="Migrations\201708120141075_AddNumberAvailableToMovie.Designer.cs">
       <DependentUpon>201708120141075_AddNumberAvailableToMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708122154200_SeedCustomers.cs" />
+    <Compile Include="Migrations\201708122154200_SeedCustomers.Designer.cs">
+      <DependentUpon>201708122154200_SeedCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -634,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708120141075_AddNumberAvailableToMovie.resx">
       <DependentUpon>201708120141075_AddNumberAvailableToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708122154200_SeedCustomers.resx">
+      <DependentUpon>201708122154200_SeedCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
