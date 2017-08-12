@@ -10,7 +10,9 @@ namespace mvcMovieStore
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/scripts/datatables/jquery.datatables.js"));
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/datatables/jquery.datatables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,13 +24,15 @@ namespace mvcMovieStore
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/scripts/bootbox.js",
+                      "~/Scripts/bootbox.js",
                       "~/Scripts/respond.js",
-                      "~/scripts/datatables/datatables.bootstrap.js"));
+                      "~/Scripts/datatables/datatables.bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-cerulean.css",
-                      "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/typeahead.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
     }
