@@ -68,6 +68,7 @@ namespace mvcMovieStore.Controllers
             if (movie.ID == 0)
             {
                 movie.DateAdded = DateTime.Now;
+                movie.NumberAvailable = movie.NumberInStock;
                 _context.Movies.Add(movie);
             }
             else
@@ -77,6 +78,7 @@ namespace mvcMovieStore.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreID = movie.GenreID;
                 movieInDb.NumberInStock = movie.NumberInStock;
+                movieInDb.NumberAvailable = movieInDb.NumberInStock;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");
