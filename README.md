@@ -1,8 +1,6 @@
 ﻿# Movie Store Rental System
 
-This dynamic website is a online movie store rental system, 
-through which one can do CRUD functions on the movies and 
-customers, and add new rentals.
+This project created a dynamic website for an online movie store rental system. Anonymous users can browse the movie/customer list, while administrator can do CRUD functions on the movies/customers and add new rentals.
 
 Demo site hosted on Azure: https://mvcmoviestore.azurewebsites.net/
 
