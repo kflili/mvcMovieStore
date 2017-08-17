@@ -4,6 +4,8 @@ This project created a dynamic website for an online movie store rental system. 
 
 Demo site hosted on Azure: https://mvcmoviestore.azurewebsites.net/
 
+![Demo site capture](MovieStore.png)
+
 ### Achievement
 - Used Code first approach to create data models using Entity framework 6
 - Created RESTful Service using ASP.NET Web API
